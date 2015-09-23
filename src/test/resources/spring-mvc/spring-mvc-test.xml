@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jetty="http://www.urbantower.io/schema/jetty"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.urbantower.io/schema/jetty http://www.urbantower.io/schema/jetty/jetty.xsd">
+
+<bean id="service" class="org.urbantower.j4s.example.springmvc.Service"/>
+
+    <jetty:server http-port="9091">
+        <jetty:handlers>
+            <jetty:servlet-context context-path="/webapp">
+                <jetty:servlet-dispatcher context-config-location="classpath:/spring-mvc/rest.xml" />
+            </jetty:servlet-context>
+            <jetty:default-handler/>
+        </jetty:handlers>
+    </jetty:server>
+
+</beans>

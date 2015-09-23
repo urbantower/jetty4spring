@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jetty="http://www.urbantower.io/schema/jetty"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.urbantower.io/schema/jetty http://www.urbantower.io/schema/jetty/jetty.xsd">
+
+    <jetty:server http-port="9092">
+        <jetty:handlers>
+            <jetty:webapp-context context-path="/webapp" resource-base="classpath:/webapp/resource" descriptor="classpath:/webapp/resource/web.xml" />
+            <jetty:default-handler/>
+        </jetty:handlers>
+    </jetty:server>
+
+
+</beans>

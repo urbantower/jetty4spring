@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.urbantower.io/schema/jetty" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:beans="http://www.springframework.org/schema/beans"
+            targetNamespace="http://www.urbantower.io/schema/jetty"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+    <xsd:import namespace="http://www.springframework.org/schema/beans" />
+
+    <xsd:element name="server" type="servetType"/>
+    <xsd:element name="handlers" type="handlersType"/>
+    <xsd:element name="servlet-context" type="servletContextHandlerType"/>
+    <xsd:element name="webapp-context" type="webAppContextType"/>
+
+    <xsd:complexType name="servetType">
+        <xsd:complexContent>
+            <xsd:extension base="beans:identifiedType">
+                <xsd:choice minOccurs="0" maxOccurs="1">
+                    <xsd:element name="handlers" type="handlersType"/>
+                    <xsd:element name="default-handler" />
+                    <xsd:element name="autowired-handlers" type="autowiredHandlersType"/>
+                    <xsd:element name="servlet-context" type="servletContextHandlerType" />
+                    <xsd:element name="webapp-context" type="webAppContextType" />
+                </xsd:choice>
+                <xsd:attribute name="http-port"   type="xsd:int" default="9090"/>
+                <xsd:attribute name="handler"     type="xsd:string" />
+                <xsd:attribute name="thread-pool" type="xsd:string" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="autowiredHandlersType">
+    </xsd:complexType>
+
+    <xsd:complexType name="handlerType">
+        <xsd:attribute name="ref" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="servletContextHandlerType">
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="servlet" type="servletType"/>
+            <xsd:element name="servlet-dispatcher" type="servletDispatcherType"/>
+        </xsd:choice>
+        <xsd:attribute name="context-path" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="servletType">
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="url-pattern" type="mappingType"/>
+        </xsd:choice>
+        <xsd:attribute name="servlet-name" />
+        <xsd:attribute name="class" type="xsd:string" use="required"/>
+        <xsd:attribute name="url-pattern"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="servletDispatcherType">
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="url-pattern" type="mappingType"/>
+        </xsd:choice>
+        <xsd:attribute name="context-config-location" type="xsd:string" use="required" />
+        <xsd:attribute name="servlet-name" />
+        <xsd:attribute name="url-pattern"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="mappingType">
+        <xsd:attribute name="path" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="handlersType">
+        <xsd:complexContent>
+            <xsd:extension base="beans:identifiedType">
+                <xsd:group ref="handlersGroup"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="webAppContextType">
+        <xsd:attribute name="context-path" type="xsd:string" default="/"/>
+        <xsd:attribute name="descriptor" type="xsd:string" use="required"/>
+        <xsd:attribute name="resource-base" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
+    <xsd:group name="handlersGroup">
+        <xsd:sequence>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="handler" type="handlerType"/>
+                <xsd:element name="handlers" type="handlersType"/>
+                <xsd:element name="autowired-handlers" type="autowiredHandlersType" />
+                <xsd:element name="default-handler" />
+                <xsd:element name="servlet-context" type="servletContextHandlerType" />
+                <xsd:element name="webapp-context"  type="webAppContextType" />
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:group>
+
+</xsd:schema>
