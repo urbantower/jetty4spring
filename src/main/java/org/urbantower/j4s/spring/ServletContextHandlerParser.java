@@ -1,3 +1,18 @@
+/**
+ * Copyright 2015 vrabel.zdenko@gmail.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.urbantower.j4s.spring;
 
 import org.eclipse.jetty.server.session.SessionHandler;
@@ -12,14 +27,20 @@ import org.springframework.util.xml.DomUtils;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.w3c.dom.Element;
 import org.urbantower.j4s.EmbeddedJettyServletContextHandler;
-import org.urbantower.j4s.TestServlet;
 
 import javax.servlet.Servlet;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by z.vrabel on 17. 9. 2015.
+ * This class is parsing  'servlet-context', 'servlet' and 'dispatcher-servlet' tags and
+ * creates bean definition of {EmbeddedJettyServletContextHandler} which is
+ * extended ServletContextHandler. This class is also handling the servlet registration
+ * etc.
+ *
+ * @see EmbeddedJettyServletContextHandler
+ * @see org.eclipse.jetty.servlet.ServletContextHandler
+ *
  */
 public class ServletContextHandlerParser extends AbstractBeanDefinitionParser {
 
@@ -70,12 +91,6 @@ public class ServletContextHandlerParser extends AbstractBeanDefinitionParser {
         String contextConfigLocation = dispatcherElm.getAttribute("context-config-location");
 
         //register servlet
-        /*
-        ServletHolder holder = new ServletHolder(servletName, DispatcherServlet.class);
-        holder.setInitParameter("contextConfigLocation", contextConfigLocation);
-        handler.addServlet(holder);
-        */
-
         DispatcherServlet dispatcherServlet = new DispatcherServlet();
         dispatcherServlet.setContextConfigLocation(contextConfigLocation);
         ServletHolder holder = new ServletHolder(servletName, dispatcherServlet);

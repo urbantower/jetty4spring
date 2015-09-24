@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.urbantower.j4s.example.webapp;
+package org.urbantower.j4s.example.servlet;
 
 import junit.framework.Assert;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -29,24 +29,20 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-@ContextConfiguration(locations = {"classpath:webapp/webapp-test.xml"})
-public class WebAppTest extends AbstractTestNGSpringContextTests {
+@ContextConfiguration(locations = {"classpath:servlet/servlet-test.xml"})
+public class ServletTest extends AbstractTestNGSpringContextTests {
 
     CloseableHttpClient httpclient = HttpClients.createDefault();
 
     @Test
     public void isJettyServerRunning() throws InterruptedException, IOException {
-        CloseableHttpResponse response = httpclient.execute(new HttpGet("http://localhost:9092/webapp"));
+        CloseableHttpResponse response = httpclient.execute(new HttpGet("http://localhost:9095/webapp/servlet"));
         String body = EntityUtils.toString(response.getEntity());
-        Assert.assertTrue(body.contains("Hello Webapp"));
-
-        response = httpclient.execute(new HttpGet("http://localhost:9092/webapp/servlet"));
-        body = EntityUtils.toString(response.getEntity());
         Assert.assertTrue(body.contains("Hello Servlet"));
     }
 
-
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:webapp/webapp-test.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:servlet/servlet-test.xml");
     }
+
 }

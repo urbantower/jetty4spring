@@ -5,17 +5,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.urbantower.io/schema/jetty http://www.urbantower.io/schema/jetty/jetty.xsd">
 
-
-    <jetty:server http-port="9093">
-        <jetty:handlers>
-            <jetty:autowired-handlers/>
-            <jetty:default-handler/>
-        </jetty:handlers>
+    <jetty:server http-port="9095">
+        <jetty:servlet-context context-path="/webapp">
+            <jetty:servlet url-pattern="/servlet" class="org.urbantower.j4s.example.HelloWorldServlet" />
+        </jetty:servlet-context>
     </jetty:server>
-
-
-    <jetty:servlet-context context-path="/test">
-        <jetty:servlet class="org.urbantower.j4s.example.HelloWorldServlet" url-pattern="/servlet"/>
-    </jetty:servlet-context>
 
 </beans>

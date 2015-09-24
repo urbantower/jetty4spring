@@ -5,10 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.urbantower.io/schema/jetty http://www.urbantower.io/schema/jetty/jetty.xsd">
 
-<jetty:server http-port="9090">
-        <jetty:handlers>
-            <jetty:default-handler/>
-        </jetty:handlers>
+    <jetty:server http-port="9090">
     </jetty:server>
 
 </beans>
