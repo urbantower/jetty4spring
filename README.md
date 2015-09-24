@@ -4,7 +4,7 @@ This library helps you with embedding Jetty to Spring application.
 
 ## Motivation
 
-Embedding web container (Jetty) into application is a new way how to create standalone and lightweight applications. When I decided embedd the 
+Embedding web container (Jetty) into application is a new way how to create standalone and lightweight applications. When I decided embed the 
 Jetty into one application (before amazing Spring Boot), I've bother with huge and hard-to-read XML. I decided to write a Spring namespace that
 simplify these XML fragments and make them more readable. This library is a result of this decision.
  
