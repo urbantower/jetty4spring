@@ -98,7 +98,7 @@ simplify these XML fragments and make them more readable. This library is a resu
     
 # Troubleshooting
     
- Have a question? Need a help? Create an [issue](https://github.com/urbantower/jetty4spring/issues/new). 
+ Have a question or new requirement? Need a help? Create an [issue](https://github.com/urbantower/jetty4spring/issues/new).
    
 # Licencing
     
