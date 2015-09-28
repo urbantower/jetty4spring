@@ -6,10 +6,33 @@
     <artifactId>j4s</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>Jetty4Spring</name>
+    <packaging>jar</packaging>
+
     <description>
         this library helps with embedding Jetty to Spring application
     </description>
-    <packaging>jar</packaging>
+    <url>https://github.com/urbantower/jetty4spring/</url>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Zdenko Vrabel</name>
+            <email>zdevra@gmail.com</email>
+            <url>http://zdenkovrabel.org</url>
+        </developer>
+    </developers>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/urbantower/jetty4spring/issues</url>
+    </issueManagement>
+    <scm>
+        <connection>scm:git:https://github.com/urbantower/jetty4spring.git</connection>
+        <url>https://github.com/urbantower/jetty4spring.git</url>
+    </scm>
 
     <properties>
         <spring-version>4.1.6.RELEASE</spring-version>
@@ -100,8 +123,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.6</source>
+                    <target>1.6</target>
                 </configuration>
             </plugin>
         </plugins>

@@ -25,11 +25,9 @@ simplify these XML fragments and make them more readable. This library is a resu
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns:jetty="http://www.urbantower.io/schema/jetty"
              xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-                                 http://www.urbantower.io/schema/jetty http://www.urbantower.io/schema/jetty/jetty.xsd">     
-      
+                                 http://www.urbantower.io/schema/jetty http://www.urbantower.io/schema/jetty/jetty.xsd">           
           <jetty:server http-port="9090">
-          </jetty:server>
-            
+          </jetty:server>          
       </beans>
       
   When you run your spring application with this XML and type localhost:9090 into your browser, you should see `No context on this server matched or 
