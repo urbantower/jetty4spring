@@ -36,12 +36,8 @@ public class WebAppTest extends AbstractTestNGSpringContextTests {
 
     @Test
     public void isJettyServerRunning() throws InterruptedException, IOException {
-        CloseableHttpResponse response = httpclient.execute(new HttpGet("http://localhost:9092/webapp"));
+        CloseableHttpResponse response = httpclient.execute(new HttpGet("http://localhost:9092/webapp/servlet"));
         String body = EntityUtils.toString(response.getEntity());
-        Assert.assertTrue(body.contains("Hello Webapp"));
-
-        response = httpclient.execute(new HttpGet("http://localhost:9092/webapp/servlet"));
-        body = EntityUtils.toString(response.getEntity());
         Assert.assertTrue(body.contains("Hello Servlet"));
     }
 
