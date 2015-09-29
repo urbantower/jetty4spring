@@ -4,7 +4,7 @@
 
     <groupId>org.urbantower</groupId>
     <artifactId>j4s</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1.0</version>
     <name>Jetty4Spring</name>
     <packaging>jar</packaging>
 
